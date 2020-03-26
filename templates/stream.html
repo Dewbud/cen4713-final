@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls></video>
+        <!-- Streaming -->
+        <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
+        <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+        <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.11.0/videojs-dash.min.js"></script>
+        <script>
+            var player = videojs('example-video');
+            
+            player.ready(function() {
+                player.src({
+                    src: '/stream/video.mpd',
+                    type: 'application/dash+xml'
+                });
+                
+                player.play();
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}

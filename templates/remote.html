@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Livestream{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1>Livestream</h1>
+    </div>
+    <div id="start" class="col-12">
+        <form onsubmit="startSteaming(event)">
+            <input id="display_name" type="text" class="form-control mb-2" placeholder="Display Name" required>
+            <button type="submit" class="btn btn-primary btn-block mb-2">Go Live</button>
+        </form>
+    </div>
+    <div id="end" class="col-12 d-none">
+        <button class="btn btn-danger" onclick="toggleLive(false)">Disconnect</button>
+    </div>
+    <div id="stream" class="col-12 d-none">
+        <video id="localVideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+    </div>
+</div>
+
+<!-- Live Streaming -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+<script type="text/javascript">
+    const room = '{{room}}';
+</script>
+<script src="{{ url_for('static', filename='js/remote.js') }}"></script>
+{% endblock %}
