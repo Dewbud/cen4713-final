@@ -23,18 +23,15 @@ const toggleLive = (bool) => {
 const start = document.getElementById('start');
 const end = document.getElementById('end');
 const stream_ui = document.getElementById('stream');
-const chat = document.getElementById('chat');
 
 const toggleUI = (bool) => {
   if (bool) {
     start.classList.add(['d-none']);
     stream_ui.classList.remove(['d-none']);
-    chat.classList.remove(['d-none']);
     end.classList.remove(['d-none']);
   } else {
     start.classList.remove(['d-none']);
     stream_ui.classList.add(['d-none']);
-    chat.classList.add(['d-none']);
     end.classList.add(['d-none']);
   }
 }
